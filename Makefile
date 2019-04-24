@@ -1,11 +1,12 @@
-BUILDER_TAG=s2ihaskell-builder:lts-13.18
+LTS=lts-13.18
+BUILDER_TAG=s2ihaskell-builder:${LTS}
 RUNTIME_TAG=s2ihaskell-runtime
 APP_BUILDER_TAG=s2ihaskell-example-builder
 APP_RUNTIME_TAG=s2ihaskell-example-runtime
 
 .PHONY: prepare-builder
 prepare-builder:
-	cd builder && docker build -t ${BUILDER_TAG} .
+	cd builder && docker build --build-arg LTS=${LTS} -t ${BUILDER_TAG} .
 
 .PHONY: enter-builder
 enter-builder:

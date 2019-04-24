@@ -2,5 +2,5 @@
 set -eux
 
 pushd /tmp/src
-    stack test --allow-different-user
+    stack test
 popd

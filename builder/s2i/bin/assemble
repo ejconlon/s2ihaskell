@@ -1,6 +1,8 @@
 #!/bin/bash
 set -eux
 
+DIST_BIN_PATH="/opt/dist/bin"
+
 # Check role
 if [ "${ROLE}" == "builder" ]; then
     echo "Found builder role. Continuing."
@@ -11,11 +13,6 @@ else
     echo "Unknown role ${ROLE}. Exiting with error."
     exit 1
 fi
-
-# Create dist dir
-DIST_ROOT="/opt/dist"
-DIST_BIN_PATH="${DIST_ROOT}/bin"
-mkdir -p "${DIST_BIN_PATH}"
 
 # Restore build artifacts
 if [ -d /tmp/artifacts/.stack ]; then
@@ -30,5 +27,5 @@ fi
 # Build application artifacts
 pushd /tmp/src
     echo "Building project"
-    stack build --allow-different-user --test --no-run-tests --haddock --copy-bins --local-bin-path "${DIST_BIN_PATH}"
+    stack build --test --no-run-tests --haddock --copy-bins --local-bin-path "${DIST_BIN_PATH}"
 popd
