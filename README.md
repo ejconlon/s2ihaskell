@@ -1,8 +1,12 @@
 # s2ihaskell
 
-Builds Haskell Stack projects.
+Builds containers for Haskell programs using [s2i](https://github.com/openshift/source-to-image)
+and [Stack](https://docs.haskellstack.org/en/stable/README/).
 
-## Notes
+## How to use
 
-See https://github.com/openshift/source-to-image for tutorials.
-See https://github.com/openshift/source-to-image/blob/master/docs/runtime_image.md for runtime image support
+Make sure `s2i` and `docker` are installed. Run `make full`. Read the `Makefile`.
+
+## Further reading
+
+* [runtime images](https://github.com/openshift/source-to-image/blob/master/docs/runtime_image.md)
