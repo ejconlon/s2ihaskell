@@ -1,11 +1,23 @@
 #!/bin/bash
 set -eux
 
-LOCAL_BIN_PATH="/opt/${NAME}/bin"
+# Check role
+if [ "${ROLE}" == "builder" ]; then
+    echo "Found builder role. Continuing."
+elif [ "${ROLE}" == "runtime" ]; then
+    echo "Found runtime role. Exiting with success."
+    exit 0
+else
+    echo "Unknown role ${ROLE}. Exiting with error."
+    exit 1
+fi
 
-mkdir -p "${LOCAL_BIN_PATH}"
+# Create dist dir
+DIST_ROOT="/opt/dist"
+DIST_BIN_PATH="${DIST_ROOT}/bin"
+mkdir -p "${DIST_BIN_PATH}"
 
-# restore build artifacts
+# Restore build artifacts
 if [ -d /tmp/artifacts/.stack ]; then
     echo "Restoring stack home"
     mv /tmp/artifacts/.stack ${HOME}/.stack
@@ -15,8 +27,8 @@ if [ -d /tmp/artifacts/.stack-work ]; then
     mv /tmp/artifacts/.stack-work /tmp/src/.stack-work
 fi
 
-# build application artifacts
+# Build application artifacts
 pushd /tmp/src
     echo "Building project"
-    stack build --allow-different-user --test --haddock --no-run-tests --copy-bins --local-bin-path "${LOCAL_BIN_PATH}"
+    stack build --allow-different-user --test --no-run-tests --haddock --copy-bins --local-bin-path "${DIST_BIN_PATH}"
 popd

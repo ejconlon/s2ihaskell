@@ -1,3 +1,6 @@
 #!/bin/bash
+set -eux
 
-/opt/${NAME}/bin/${EXECUTABLE}
+pushd /tmp/src
+    stack test --allow-different-user
+popd

@@ -1,4 +1,5 @@
 #!/bin/bash
+set -eu
 
 mkdir /tmp/saved
 mv ${HOME}/.stack /tmp/saved
