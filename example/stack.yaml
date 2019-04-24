@@ -1,0 +1,5 @@
+# NOTE: This must track the tag in Dockerfile
+resolver: lts-13.18
+
+packages:
+- .

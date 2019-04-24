@@ -1,0 +1,7 @@
+#!/bin/bash
+
+mkdir /tmp/saved
+mv ${HOME}/.stack /tmp/saved
+mv /tmp/src/.stack-work /tmp/saved
+cd /tmp/saved
+tar cf - .stack .stack-work
