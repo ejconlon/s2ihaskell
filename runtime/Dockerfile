@@ -7,3 +7,4 @@ RUN addgroup -g 1001 appuser && \
     mkdir /opt/dist && \
     chown appuser:appuser /opt/dist
 RUN apk update && apk add gmp
+USER appuser
