@@ -6,6 +6,10 @@ if [ -d /tmp/artifacts/.stack ]; then
     echo "Restoring stack home"
     mv /tmp/artifacts/.stack ${HOME}/.stack
 fi
+if [ -d /tmp/artifacts/.local ]; then
+    echo "Restoring stack home"
+    mv /tmp/artifacts/.local ${HOME}/.local
+fi
 if [ -d /tmp/artifacts/.stack-work ]; then
     echo "Restoring stack work"
     mv /tmp/artifacts/.stack-work /tmp/src/.stack-work

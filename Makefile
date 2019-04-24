@@ -11,4 +11,8 @@ enter:
 
 .PHONY: build
 build:
-	cd example && s2i build --incremental . ${BUILDER_TAG} ${APP_TAG}
+	cd example && s2i build --incremental . --environment-file .environment ${BUILDER_TAG} ${APP_TAG}
+
+.PHONY: run
+run:
+	docker run -t ${APP_TAG}

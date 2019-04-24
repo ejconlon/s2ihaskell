@@ -1,4 +1,3 @@
 #!/bin/bash
-set -eux
 
-stack exec
+${HOME}/.local/bin/${EXECUTABLE}

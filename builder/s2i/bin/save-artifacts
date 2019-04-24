@@ -2,6 +2,7 @@
 
 mkdir /tmp/saved
 mv ${HOME}/.stack /tmp/saved
+mv ${HOME}/.local /tmp/saved
 mv /tmp/src/.stack-work /tmp/saved
 cd /tmp/saved
-tar cf - .stack .stack-work
+tar cf - .stack .local .stack-work
