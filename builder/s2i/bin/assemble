@@ -1,14 +1,14 @@
 #!/bin/bash
 set -eux
 
+LOCAL_BIN_PATH="/opt/${NAME}/bin"
+
+mkdir -p "${LOCAL_BIN_PATH}"
+
 # restore build artifacts
 if [ -d /tmp/artifacts/.stack ]; then
     echo "Restoring stack home"
     mv /tmp/artifacts/.stack ${HOME}/.stack
-fi
-if [ -d /tmp/artifacts/.local ]; then
-    echo "Restoring stack home"
-    mv /tmp/artifacts/.local ${HOME}/.local
 fi
 if [ -d /tmp/artifacts/.stack-work ]; then
     echo "Restoring stack work"
@@ -18,5 +18,5 @@ fi
 # build application artifacts
 pushd /tmp/src
     echo "Building project"
-    stack build --allow-different-user --test --haddock --no-run-tests --copy-bins
+    stack build --allow-different-user --test --haddock --no-run-tests --copy-bins --local-bin-path "${LOCAL_BIN_PATH}"
 popd
