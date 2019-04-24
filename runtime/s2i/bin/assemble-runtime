@@ -1,4 +1,3 @@
-#!/bin/bash
-set -eux
+#!/bin/sh
 
 cp -r dist /opt/dist

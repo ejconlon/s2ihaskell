@@ -1,4 +1,3 @@
-#!/bin/bash
-set -eu
+#!/bin/sh
 
-/opt/dist/bin/${EXECUTABLE}
+exec /opt/dist/bin/${EXECUTABLE}
