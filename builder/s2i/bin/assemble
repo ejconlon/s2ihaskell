@@ -14,5 +14,5 @@ fi
 # build application artifacts
 pushd /tmp/src
     echo "Building project"
-    stack build --allow-different-user --test --haddock
+    stack build --allow-different-user --test --haddock --no-run-tests --copy-bins
 popd
