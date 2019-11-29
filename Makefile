@@ -1,8 +1,12 @@
-LTS=lts-13.18
+LTS=lts-14.16
 BUILDER_TAG=s2ihaskell-builder:${LTS}
 RUNTIME_TAG=s2ihaskell-runtime
 APP_BUILDER_TAG=s2ihaskell-example-builder
 APP_RUNTIME_TAG=s2ihaskell-example-runtime
+
+.PHONY: bump-lts
+bump-lts:
+	gsed -i'' "s/resolver:.*/resolver: ${LTS}/" example/stack.yaml
 
 .PHONY: prepare-builder
 prepare-builder:
